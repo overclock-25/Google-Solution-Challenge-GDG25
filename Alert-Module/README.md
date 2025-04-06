@@ -1,7 +1,7 @@
 # 🌾 Weather Alert Engine 🚨
 
 Because rain doesn’t RSVP, but your app can.  
-The Weather Alert Module is a backend submodule built for the **GreenTip**, designed to fetch, process, and deliver weather-related alerts to users. Built with **Next.js**, it leverages **Firestore** for data management and **FCM** for push notifications, ensuring timely and personalized notifications for districts and farms through a modular, type-safe architecture.
+The Weather Alert Module is a backend submodule built for **GreenTip**, designed to fetch, process, and deliver weather-related alerts to users. Built with **Next.js**, it leverages **Firestore** for data management and **FCM** for push notifications, ensuring timely and personalized notifications for districts and farms through a modular, type-safe architecture.
 
 ---
 
