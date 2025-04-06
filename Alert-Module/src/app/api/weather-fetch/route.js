@@ -1,18 +1,15 @@
 import { NextResponse } from 'next/server';
 import { getWeatherAlerts, filterCurrentAlerts, formatNewAlerts, groupActiveAlerts } from '@/lib/weather-fetch';
 import { getDistricts, getActiveAlerts, writeNewAlerts, storeNotifications } from '@/lib/firestore';
-//import {apiresponse} from '@/lib/notifications';
 
 export async function GET() {
   try {
     const all_districts = await getDistricts();
-    console.log('All districts:', all_districts);
 
     const active_alerts = await getActiveAlerts();
-    console.log('Active alerts:', active_alerts);
 
-    //const current_alerts = apiresponse;
     const current_alerts = await Promise.all(all_districts.map(district => getWeatherAlerts(district)));
+    console.log('Current alerts:', current_alerts);
 
     const new_alerts = filterCurrentAlerts(current_alerts, active_alerts);
 
