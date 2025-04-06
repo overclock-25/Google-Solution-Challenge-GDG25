@@ -2,7 +2,7 @@
 
 GreenTip is a comprehensive farming assistant platform that leverages artificial intelligence to provide personalized insights, analysis, and recommendations to farmers. By combining real-time environmental data with advanced image analysis and predictive algorithms, GreenTip helps farmers make informed decisions to optimize crop yield and health.
 
-![GreenTip Logo](./logo.png)
+<img src = "./logo.png" height = 138 width = 246/>
 
 ## System Overview
 
