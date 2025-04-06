@@ -31,4 +31,4 @@ Designed with a utility-based approach, ensuring reusable and maintainable code.
 - 🎛 Web dashboard for admins
 - 🔁 Retry logic for failed sends
 
-# 🙌 Shoutout to Soil-Weather API, Firebase, and coffee — without you, this wouldn't compile.
+**🙌 Shoutout to Soil-Weather API, Firebase, and coffee — without you, this wouldn't compile.**
