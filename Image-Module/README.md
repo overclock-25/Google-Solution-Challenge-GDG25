@@ -40,9 +40,13 @@ This application is a web-based tool that utilizes the power of Google's Gemini 
 ## File Tree
 
 ```
-gemini-frontend/
+Image-Module/
 ├─ app/
 │  ├─ api/
+│  │  ├─ check/
+│  │  │  └─ route.js
+│  │  ├─ detect/
+│  │  │  └─ route.js
 │  │  └─ ready/
 │  │     └─ route.js
 │  ├─ health/
@@ -53,8 +57,14 @@ gemini-frontend/
 │  ├─ globals.css
 │  ├─ layout.js
 │  └─ page.js
+├─ model/
+│  ├─ app.py
+│  ├─ html_content.py
+│  ├─ model.ipynb
+│  └─ requirements.txt
 ├─ public/
-│  ├─ service-worker.js
+│  └─ service-worker.js
+├─ .gitignore
 ├─ eslint.config.mjs
 ├─ jsconfig.json
 ├─ next.config.mjs
@@ -77,7 +87,7 @@ gemini-frontend/
 1.  **Clone the repository:**
     ```bash
     git clone <your-repository-url>
-    cd gemini-frontend
+    cd GreenTip/Image-Module
     ```
 2.  **Install dependencies:**
     ```bash
@@ -93,7 +103,7 @@ gemini-frontend/
 
 1.  **Navigate to the backend directory:**
     ```bash
-    cd ../Gemini-Model
+    cd model
     ```
 2.  **Create a virtual environment (recommended):**
     ```bash
@@ -137,7 +147,7 @@ gemini-frontend/
 
 -   Ensure that the frontend is configured to send requests to the correct backend URL. In `app/page.js`, the `fetch` URL should point to your backend:
     ```javascript
-    const response = await fetch("https://gemini-api-er52.onrender.com/detect", { // Or http://127.0.0.1:8000/detect if running locally
+    const response = await fetch("https://plant-health-detection.vertcel.app/detect", { // Or http://127.0.0.1:8000/detect if running locally
         method: "POST",
         body: formData,
     });
