@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pillow
+numpy
+opencv-python-headless
+google-generativeai
+python-multipart
+python-dotenv
+gradio
+httpx 
+asyncio
