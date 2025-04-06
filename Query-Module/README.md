@@ -1,8 +1,8 @@
-# FarmAI - Smart Farming Assistant
+# Farm Management App
 
 ## Overview
 
-This is a Next.js-powered web application designed to assist farmers with AI-powered insights, analysis, and recommendations. Built with modern technologies and integrated with Google's Gemini API, this application provides personalized farming assistance based on location-specific weather, soil conditions, and image analysis.
+This is a Next.js-powered web application which is a part of "GreenTip" designed to assist farmers with AI-powered insights, analysis, and recommendations. Built with modern technologies and integrated with Google's Gemini API, this application provides personalized farming assistance based on location-specific weather, soil conditions, and image analysis.
 
 ## Features
 
@@ -121,7 +121,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License.
 
 ## Acknowledgments
 
