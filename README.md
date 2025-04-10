@@ -128,6 +128,59 @@ The main web application that integrates all modules and provides the user inter
 - **Visual Query System:** Ask questions about crops with accompanying images
 - **Data Integration:** Unified interface for all environmental and plant health data
 
+## Firebase Database Structure
+
+This project uses Firebase Firestore as its database. Below is the structure of our collections and their fields.
+
+### Collections Overview
+
+The database consists of 4 main collections:
+- Users
+- Farms
+- Districts
+- Notifications
+
+### Users Collection
+
+| Field | Type | Description |
+|-------|------|-------------|
+| createdAt | Timestamp | When the user account was created |
+| email | String | User's email address |
+| name | String | User's name |
+| fcmTokens | Array | List of Firebase Cloud Messaging tokens for notifications |
+| farms | Array | References to farms owned by this user |
+
+### Farms Collection
+
+| Field | Type | Description |
+|-------|------|-------------|
+| createdAt | Timestamp | When the farm was created |
+| name | String | Name of the farm |
+| notification | Boolean | Whether notifications are enabled for this farm |
+| waterSource | Number | Identifier for the water source type |
+| userId | String | Document ID of the farm owner in the users collection |
+| userRef | Reference | Reference to the farm owner in the users collection |
+| location | GeoPoint | Geographic coordinates of the farm |
+| districtRef | Reference | Reference to the district in the districts collection |
+| interactions | Array | List of objects containing interaction data. Each object has `date` and `type` fields |
+
+### Districts Collection
+
+| Field | Type | Description |
+|-------|------|-------------|
+| code | String | District code identifier |
+| name | String | District name |
+| state | String | State the district belongs to |
+| alerts | Subdocument | Contains alert information for the district |
+
+### Notifications Collection
+
+| Field | Type | Description |
+|-------|------|-------------|
+| lastUpdated | Timestamp | When notifications were last updated |
+| payload | Object | Object containing alerts for different districts |
+
+
 ## Getting Started
 
 ### Prerequisites
