@@ -17,6 +17,7 @@ export default function StartHarvestPage() {
   const [cropName, setCropName] = useState("");
   const [shouldFetchCrops, setShouldFetchCrops] = useState(false);
   const [response, setResponse] = useState(null);
+  const [selectedCrop, setSelectedCrop] = useState(null);
 
   const [
     getStartHarvest,
@@ -38,17 +39,27 @@ export default function StartHarvestPage() {
     }
   }, [user, isLoading, userError, router]);
 
-  console.log(cropsData);
+  useEffect(() => {
+    if (selectedCrop) {
+      setCropName(selectedCrop);
+    }
+  }, [selectedCrop]);
+
+  // console.log(cropsData);
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!cropName.trim()) return;
     try {
-      const result = await getStartHarvest({ farmId, cropName });
-      console.log({ result });
+      const result = await getStartHarvest({ farmId, cropName }).unwrap();
+      // console.log({ result });
+      if (!result) {
+        throw new Error("No response data from server.");
+      }
       setResponse(JSON.parse(result.data));
       setCropName("");
     } catch (err) {
       console.log(err);
+      setResponse(null);
     }
   };
 
@@ -99,7 +110,11 @@ export default function StartHarvestPage() {
         <StartHarvestResponse response={response} />
       )}
       {isCropsSuccess && !isHarvestSuccess && (
-        <CropSuggestions cropSuggestions={cropsData?.crops} />
+        <CropSuggestions
+          cropSuggestions={cropsData?.crops}
+          selectedCrop={selectedCrop}
+          setSelectedCrop={setSelectedCrop}
+        />
       )}
     </Card>
   );

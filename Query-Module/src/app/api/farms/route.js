@@ -4,6 +4,7 @@ import { z } from "zod";
 import { verifyAndGetUserId } from "@/lib/auth/verifyToken";
 import { GeoPoint } from "firebase-admin/firestore";
 import { FieldValue } from "firebase-admin/firestore";
+import { subToTopic } from "@/lib/services/token-subscribe";
 
 export async function GET(request) {
   const authResult = await verifyAndGetUserId(request);
@@ -119,6 +120,18 @@ export async function POST(request) {
       { farms: FieldValue.arrayUnion(farmRef) },
       { merge: true }
     );
+
+    const userDoc = await userRef.get();
+    const userData = userDoc.data();
+
+    if (userData && userData.fcmTokens && userData.fcmTokens.length > 0) {
+      const subscriptionPromises = userData.fcmTokens.map(token => 
+        subToTopic(token, districtId)
+      );
+      
+      await Promise.all(subscriptionPromises);
+      console.log(`Subscribed ${userData.fcmTokens.length} tokens to district ${districtId}`);
+    }
 
     return NextResponse.json(
       { success: true, id: farmRef.id },
