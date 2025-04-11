@@ -84,33 +84,3 @@ export async function getNotifications() {
     return null;
   }
 }
-
-export async function getFarmsByDistrict(dist_ref) {
-  try {
-    const farms_snapshot = await db.collection('farms').where('districtRef', '==', db.doc(dist_ref)).where('notification', '==', true).get();
-    return farms_snapshot.docs.map(doc => doc.data());
-  }
-  catch (error) {
-    console.error('Error getting farms for districts:', error);
-    return [];
-  }
-}
-
-export async function getFcmTokens(user_paths) {
-  try {
-    const user_refs = user_paths.map(path => db.doc(path));
-    const user_docs = await db.getAll(...user_refs);
-
-    const token_map = {};
-    user_docs.forEach(doc => {
-      if (doc.exists) {
-        token_map[doc.ref.path] = doc.data().fcmTokens;
-      }
-    });
-
-    return token_map;
-  } catch (error) {
-    console.error('Error fetching FCM tokens:', error);
-    return {};
-  }
-}
