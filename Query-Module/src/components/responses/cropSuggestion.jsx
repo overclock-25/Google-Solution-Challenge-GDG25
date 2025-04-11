@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-const CropSuggestions = ({ cropSuggestions }) => {
-  const [selectedCrop, setSelectedCrop] = useState(null);
+const CropSuggestions = ({ cropSuggestions, selectedCrop, setSelectedCrop }) => {
   // console.log(cropSuggestions);
   return (
     <div className="container mx-auto p-4 max-w-4xl">
@@ -19,7 +18,7 @@ const CropSuggestions = ({ cropSuggestions }) => {
               text-center font-medium
               ${
                 selectedCrop === cropName
-                  ? "bg-green-600 text-white shadow-lg"
+                  ? "bg-emerald-300  shadow-lg"
                   : "bg-gray-100 text-gray-800 hover:bg-green-100 hover:shadow-md"
               }
             `}
